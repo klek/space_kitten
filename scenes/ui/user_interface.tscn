@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ui/user_interface.gd" id="1_3gagj"]
 
 [node name="user_interface" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_3gagj")
 
 [node name="main_menu" type="Control" parent="."]
@@ -79,15 +80,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="score/HBoxContainer"]
+[node name="time_bar" type="NinePatchRect" parent="score/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="time_elapsed" type="Label" parent="score/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="score/HBoxContainer/time_bar"]
+layout_mode = 2
+offset_left = 4.0
+offset_right = 190.0
+offset_bottom = 550.0
+size_flags_horizontal = 3
+
+[node name="time_elapsed" type="Label" parent="score/HBoxContainer/time_bar/VBoxContainer"]
 layout_mode = 2
 text = "Elapsed time"
 
-[node name="Label2" type="Label" parent="score/HBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="score/HBoxContainer/time_bar/VBoxContainer"]
 layout_mode = 2
 text = "asdasdas"
 
@@ -96,11 +104,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="score/HBoxContainer"]
+[node name="splits_bar" type="NinePatchRect" parent="score/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="time_splits" type="Label" parent="score/HBoxContainer/VBoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="score/HBoxContainer/splits_bar"]
+layout_mode = 2
+offset_left = 4.0
+offset_right = 229.0
+offset_bottom = 550.0
+size_flags_horizontal = 3
+
+[node name="time_splits" type="Label" parent="score/HBoxContainer/splits_bar/VBoxContainer2"]
 layout_mode = 2
 text = "Current splits"
 

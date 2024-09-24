@@ -48,7 +48,7 @@ texture = SubResource("PlaceholderTexture2D_vui1u")
 position = Vector2(128, 360)
 metadata/_edit_group_ = true
 
-[node name="Camera2D" type="Camera2D" parent="flying_saucer"]
+[node name="Camera2D2" type="Camera2D" parent="flying_saucer"]
 
 [node name="walls" parent="." instance=ExtResource("3_m0wcj")]
 

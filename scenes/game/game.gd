@@ -1,28 +1,123 @@
 extends Node
 class_name game
 
-@onready var flying_saucer: RigidBody2D = $flying_saucer
+#@onready var flying_saucer: RigidBody2D = $flying_saucer
+
+#@export var ui_scene : PackedScene
+@export var world_scene : PackedScene
+@export var player_scene : PackedScene
+
+@onready var ui: user_interface = %user_interface
+
+# Variables for tracking the amount of re-tries
+var nr_or_retries : int = 0
+
+# Variables for tracking name
+var node_name_world : String = ""
+var node_name_player : String = ""
 
 func _ready() -> void:
-	pass
+	# Connect signals from ui to the local callbacks
+	ui.user_requested_quit_game.connect(_on_user_requested_quit_game)
+	ui.user_requested_resume_game.connect(_on_user_requested_resume_game)
+	ui.user_requested_start_game.connect(_on_user_requested_start_game)
 
 
-func _process(delta: float) -> void:
-	pass
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("quit"):
+		quit_game()
+	if event.is_action_pressed("restart"):
+		_on_user_requested_start_game()
+	if event.is_action_pressed("open_menu"):
+		pause_game()
 
 
-func _on_user_interface_user_requested_quit_game() -> void:
+func pause_game():
+	get_tree().paused = true
+
+
+func unpause_game():
+	get_tree().paused = false
+
+
+func reload_game() -> void:
+	# Load the world we are gonna use
+	# If the world has already been loaded, we change the scene
+	if !node_name_world.is_empty():
+		# Remove the old world
+		var node_world : Node = get_node(node_name_world)
+		remove_child(node_world)
+		node_world.queue_free()
+		# Set the string value to zero
+		node_name_world = ""
+
+	if !node_name_player.is_empty():
+		# Remove the old player
+		var node_player : Node = get_node(node_name_player)
+		remove_child(node_player)
+		node_player.queue_free()
+		# Set the string value to zero
+		node_name_player = ""
+
+	var scene_world : Node2D = load_scene(world_scene)
+	if ( scene_world == null ):
+		# To be replaced with a quit function
+		quit_game()
+		return
+	# Add the world as a child
+	add_child(scene_world, true)
+	# Save the node name 
+	node_name_world = scene_world.name
+	
+	# Grab the starting position for the player in this world
+	var start_position : Vector2 = Vector2.ZERO
+	if ( get_node(node_name_world).has_method("get_start_position") ):
+		start_position = get_node(node_name_world).get_start_position()
+	
+	# Load the player
+	var scene_player : Node2D = load_scene(player_scene)
+	if ( scene_player == null ):
+		# To be replaced with a quit function
+		quit_game()
+		return
+	# Set the starting position for the player
+	scene_player.global_position = start_position
+	# Add the player as a child
+	add_child(scene_player, true)
+	# Save the node name
+	node_name_player = scene_player.name
+
+
+func load_scene( scene_to_load: PackedScene ) -> Node2D:
+	# Check that ui_scene is set
+	if ( scene_to_load == null ):
+		print("Exported variable ui_scene is not set...exiting!")
+		return null
+	# Load the scene
+	var scene = scene_to_load.instantiate()
+	#add_child(scene, true)
+	print("Loaded scene: ", scene.name)
+	return scene
+
+
+func quit_game() -> void:
 	get_tree().quit()
 
 
-func _on_user_interface_user_requested_resume_game() -> void:
-	pass # Replace with function body.
+func _on_user_requested_quit_game() -> void:
+	quit_game()
 
 
-func _on_user_interface_user_requested_start_game() -> void:
-	#get_tree().reload_current_scene()
-	# Reset the players position by re-spawning the player at the
-	# starting position
-	#if flying_saucer.has_method("teleport"):
-	#	flying_saucer.teleport()
-	pass
+func _on_user_requested_resume_game() -> void:
+	unpause_game()
+
+
+func _on_user_requested_start_game() -> void:
+	# Pause the game world
+	pause_game()
+	# Reload the world and player
+	reload_game()
+	# Restart the clock
+	# TODO(klek): Implement the clock
+	# Unpause the game world
+	unpause_game()

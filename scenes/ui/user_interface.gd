@@ -16,6 +16,8 @@ signal user_requested_start_game()
 func _ready() -> void:
 	# Show main menu 
 	main_menu.show()
+	# Hide the resume game button
+	resume_game.hide()
 	# TODO(klek): Make sure the time labels are reset
 	score.hide()
 	pass
@@ -44,7 +46,12 @@ func _on_resume_game_pressed() -> void:
 func _on_start_game_pressed() -> void:
 	if main_menu.visible:
 		user_requested_start_game.emit()
-		print("Start game pressed!")
+		print("Start/Restart game pressed!")
+		# Change the text on the start game button
+		start_game.text = "Restart"
+		# Unhide the resume butting
+		resume_game.show()
+		hide_main_menu()
 
 
 func _on_quit_game_pressed() -> void:
