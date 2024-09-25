@@ -91,12 +91,28 @@ offset_right = 190.0
 offset_bottom = 550.0
 size_flags_horizontal = 3
 
-[node name="time_elapsed" type="Label" parent="score/HBoxContainer/time_bar/VBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="score/HBoxContainer/time_bar/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="time_elapsed" type="Label" parent="score/HBoxContainer/time_bar/VBoxContainer/NinePatchRect"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 4.0
+offset_right = 186.0
+offset_bottom = 27.0
 text = "Elapsed time"
 
-[node name="Label2" type="Label" parent="score/HBoxContainer/time_bar/VBoxContainer"]
+[node name="NinePatchRect2" type="NinePatchRect" parent="score/HBoxContainer/time_bar/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="nr_of_tries" type="Label" parent="score/HBoxContainer/time_bar/VBoxContainer/NinePatchRect2"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 4.0
+offset_right = 186.0
+offset_bottom = 27.0
 text = "asdasdas"
 
 [node name="Control" type="Control" parent="score/HBoxContainer"]

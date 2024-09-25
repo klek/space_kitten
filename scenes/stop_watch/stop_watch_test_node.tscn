@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcyyovhmb45un"]
+
+[ext_resource type="Script" path="res://scenes/stop_watch/stop_watch_scene.gd" id="1_f74yg"]
+[ext_resource type="Script" path="res://scenes/stop_watch/stop_watch.gd" id="2_omyjc"]
+[ext_resource type="Script" path="res://resources/date_time.gd" id="3_hhadw"]
+
+[sub_resource type="Resource" id="Resource_a5bum"]
+script = ExtResource("3_hhadw")
+centesimal = 0
+seconds = 0
+minutes = 0
+hours = 0
+days = 0
+
+[node name="stop_watch" type="Label"]
+script = ExtResource("1_f74yg")
+
+[node name="stop_watch" type="Node" parent="."]
+script = ExtResource("2_omyjc")
+current_time = SubResource("Resource_a5bum")

@@ -18,7 +18,6 @@ var left_thruster_offset : Vector2
 var right_thruster_offset : Vector2
 var thrust_left : Vector2 = Vector2.ZERO
 var thrust_right : Vector2 = Vector2.ZERO
-var should_teleport : bool = false
 
 func _ready() -> void:
 	# Get the offset position of each thruster
@@ -36,15 +35,10 @@ func _process(delta: float) -> void:
 
 #func _physics_process(delta: float) -> void:
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	if !should_teleport:
-		#thruster_left_dir.target_position = thrust_left
-		state.apply_force(thrust_left, left_thruster_offset)
-		#thruster_rigth_dir.target_position = thrust_right
-		state.apply_force(thrust_right, right_thruster_offset)
-	else:
-		should_teleport = false
-		state.transform.origin.x = 0
-		state.transform.origin.y = 0
+	#thruster_left_dir.target_position = thrust_left
+	state.apply_force(thrust_left, left_thruster_offset)
+	#thruster_rigth_dir.target_position = thrust_right
+	state.apply_force(thrust_right, right_thruster_offset)
 
 
 
@@ -76,7 +70,3 @@ func get_input() -> void:
 		thrust_right = Vector2.ZERO
 		right_thruster_offset = Vector2.ZERO
 		fire_right.hide()
-
-
-func teleport() -> void:
-	should_teleport = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_2jkuj"]
 [ext_resource type="PackedScene" uid="uid://bgkvxlt53f0kq" path="res://scenes/character/flying_saucer.tscn" id="1_fyjq0"]
-[ext_resource type="PackedScene" uid="uid://dpypjoppaaqqq" path="res://scenes/world/world2.tscn" id="3_m0wcj"]
+[ext_resource type="PackedScene" uid="uid://dpypjoppaaqqq" path="res://scenes/world/world_2.tscn" id="3_m0wcj"]
 [ext_resource type="PackedScene" uid="uid://co1lx4jbdpt0w" path="res://scenes/split_time/split_time.tscn" id="4_wkvb1"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fof8o"]
