@@ -55,3 +55,19 @@ func reset_time() -> void:
 	minutes = 0
 	hours = 0
 	days = 0
+
+
+#func convert_date_time_to_string_msc( val : date_time ) -> String:
+func convert_date_time_to_string_msc( ) -> String:
+	var text : String = ( str(minutes).pad_zeros(2) + ":" +
+						  str(seconds).pad_zeros(2) + ":" +
+						  str(centesimal).pad_zeros(2) )
+	return text
+
+
+func convert_date_time_to_string_hmsc( val : date_time ) -> String:
+	var text : String = ( str(val.hours).pad_zeros(2) + ":" +
+						  str(val.minutes).pad_zeros(2) + ":" +
+						  str(val.seconds).pad_zeros(2) + ":" +
+						  str(val.centesimal).pad_zeros(2) )
+	return text

@@ -45,7 +45,20 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	ui.update_time_elapsed(clock.get_time())
+	var data = clock.get_time()
+	var msg = data.convert_date_time_to_string_msc()
+	ui.time_elapsed_update(msg)
+	# NOTE(klek): Should we draw the UI elements related to splits
+	# again each time they have been updated?
+	# If we got another time split add it to the list
+	if ui.time_splits_size() < _time_splits.size():
+		ui.time_splits_add( _time_splits[-1].convert_date_time_to_string_msc() )
+	# Here we will always redraw the entire split list, is this really
+	# necessary? Because if it is, we should always do this?
+	else :
+		ui.time_splits_reset()
+		for c in _time_splits:
+			ui.time_splits_add(c.convert_date_time_to_string_msc())
 
 
 func pause_game():
@@ -84,6 +97,10 @@ func reload_game() -> void:
 	add_child(scene_world, true)
 	# Save the node name 
 	_node_name_world = scene_world.name
+	# Connect the time split signals
+	# NOTE(klek): Here we are assuming that the scene_world has a
+	# signal named new_time
+	scene_world.new_time.connect(_on_new_time_split)
 	
 	# Grab the starting position for the player in this world
 	var start_position : Vector2 = Vector2.ZERO
@@ -119,7 +136,8 @@ func load_scene( scene_to_load: PackedScene ) -> Node2D:
 func quit_game() -> void:
 	get_tree().quit()
 
-
+#**********************************************************************
+# Callbacks for UI elements
 func _on_user_requested_quit_game() -> void:
 	quit_game()
 
@@ -137,23 +155,34 @@ func _on_user_requested_start_game() -> void:
 	clock.restart()
 	# Increment nr of tries
 	_nr_or_retries += 1
-	ui.update_nr_of_tries(_nr_or_retries)
-	# Reset the clock
-	ui.update_time_elapsed(clock.get_time())
+	ui.nr_of_tries_update(_nr_or_retries)
+	# Reset the clock ui
+	ui.time_elapsed_update(clock.get_time().convert_date_time_to_string_msc())
+	# Reset time splits
+	_time_splits.clear()
+	# Reset the time splits ui
+	ui.time_splits_reset()
 	# Start countdown timer
 	_countdown_timer.start(3)
-	# TODO(klek): Update GUI countdown with "Get Ready!"
 	# Unpause the game world
 	#unpause_game()
 
-
+#**********************************************************************
+# Callbacks for the countdown timer during start of level
 func _on_one_sec_hit_timer(val : int ) -> void:
 	# TODO(klek): Update GUI countdown to show new value
-	pass
+	ui.countdown_show("Get ready!\n" + str(val))
 
 
 func _on_countdown_timeout_timer() -> void:
 	# TODO(klek): Update GUI countdown to be hidden
+	ui.countdown_hide()
 	# Unpause the game
 	unpause_game()
 	pass
+
+func _on_new_time_split(body : Node2D) -> void:
+	# When a new split time is hit, store locally and add a child 
+	# to the UI element?
+	_time_splits.append( clock.get_time() )
+	print(" New split: " + str( clock.get_time().convert_date_time_to_string_msc() ) )

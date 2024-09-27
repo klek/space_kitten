@@ -22,9 +22,9 @@ var thrust_right : Vector2 = Vector2.ZERO
 func _ready() -> void:
 	# Get the offset position of each thruster
 	left_thruster_offset = thruster_left.position
-	print(left_thruster_offset)
+	#print(left_thruster_offset)
 	right_thruster_offset = thruster_right.position
-	print(right_thruster_offset)
+	#print(right_thruster_offset)
 	thruster_left_dir.target_position = engine_vector_left*engine_power
 	thruster_rigth_dir.target_position = engine_vector_right*engine_power
 
@@ -50,7 +50,7 @@ func get_input() -> void:
 	if Input.is_action_pressed("left_thruster"):
 		#thrust_left = thruster_left.fire_thruster().rotated(rotation)
 		thrust_left = engine_vector_left.normalized().rotated(rotation) * engine_power
-		print("Applied thrust from left: " + str(thrust_left))
+		#print("Applied thrust from left: " + str(thrust_left))
 		# Get the offset position of each thruster
 		left_thruster_offset = thruster_left.position.rotated(rotation)
 		fire_left.show()
@@ -62,7 +62,7 @@ func get_input() -> void:
 	if Input.is_action_pressed("right_thruster"):
 		#thrust_right = thruster_right.fire_thruster().rotated(rotation)
 		thrust_right = engine_vector_right.normalized().rotated(rotation) * engine_power
-		print("Applied thrust from right: " + str(thrust_right))
+		#print("Applied thrust from right: " + str(thrust_right))
 		# Get the offset position of each thruster
 		right_thruster_offset = thruster_right.position.rotated(rotation)
 		fire_right.show()

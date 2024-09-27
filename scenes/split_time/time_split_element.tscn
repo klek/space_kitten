@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtodiuecqodui"]
+
+[ext_resource type="Script" path="res://scenes/split_time/time_split_element.gd" id="1_7vqms"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfdc3"]
+size = Vector2(160, 32)
+
+[node name="time_split_element" type="Node2D"]
+script = ExtResource("1_7vqms")
+
+[node name="time_split_zone" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="time_split_zone"]
+shape = SubResource("RectangleShape2D_tfdc3")

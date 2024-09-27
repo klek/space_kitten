@@ -115,10 +115,28 @@ offset_right = 186.0
 offset_bottom = 27.0
 text = "asdasdas"
 
-[node name="Control" type="Control" parent="score/HBoxContainer"]
+[node name="game_view" type="Control" parent="score/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
+
+[node name="countdown" type="Label" parent="score/HBoxContainer/game_view"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -154.0
+offset_right = 41.5
+offset_bottom = -131.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Get Ready!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="splits_bar" type="NinePatchRect" parent="score/HBoxContainer"]
 layout_mode = 2
@@ -131,9 +149,29 @@ offset_right = 229.0
 offset_bottom = 550.0
 size_flags_horizontal = 3
 
-[node name="time_splits" type="Label" parent="score/HBoxContainer/splits_bar/VBoxContainer2"]
+[node name="time_splits_title" type="Label" parent="score/HBoxContainer/splits_bar/VBoxContainer2"]
 layout_mode = 2
 text = "Current splits"
+
+[node name="time_splits" type="GridContainer" parent="score/HBoxContainer/splits_bar/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="split" type="Label" parent="score/HBoxContainer/splits_bar/VBoxContainer2/time_splits"]
+layout_mode = 2
+text = "00:00:00"
+
+[node name="split2" type="Label" parent="score/HBoxContainer/splits_bar/VBoxContainer2/time_splits"]
+layout_mode = 2
+text = "00:00:00"
+
+[node name="split3" type="Label" parent="score/HBoxContainer/splits_bar/VBoxContainer2/time_splits"]
+layout_mode = 2
+text = "00:00:00"
+
+[node name="split4" type="Label" parent="score/HBoxContainer/splits_bar/VBoxContainer2/time_splits"]
+layout_mode = 2
+text = "00:00:00"
 
 [connection signal="pressed" from="main_menu/PanelContainer/MarginContainer/VBoxContainer/resume_game" to="." method="_on_resume_game_pressed"]
 [connection signal="pressed" from="main_menu/PanelContainer/MarginContainer/VBoxContainer/start_game" to="." method="_on_start_game_pressed"]

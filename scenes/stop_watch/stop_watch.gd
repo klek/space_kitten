@@ -51,6 +51,8 @@ func restart() -> void:
 ## NOTE(klek): This will return null if the user has not assigned
 ## a date_time object to the exported variable
 func get_time() -> date_time:
+	# Should I use duplicate here? When is the duplicate freed?
+	#return current_time.duplicate()
 	return current_time
 
 
