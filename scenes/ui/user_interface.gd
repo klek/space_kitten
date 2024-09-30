@@ -19,95 +19,107 @@ signal user_requested_start_game()
 
 
 func _ready() -> void:
-	# Show main menu 
-	main_menu.show()
-	# Hide the resume game button
-	resume_game.hide()
-	# TODO(klek): Make sure the time labels are reset
-	score.hide()
-	pass
+    # Show main menu
+    main_menu.show()
+    # Hide the resume game button
+    resume_game.hide()
+    # TODO(klek): Make sure the time labels are reset
+    score.hide()
+    pass
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_menu"):
-		# Toggle showing menu
-		main_menu.visible = !main_menu.visible
-		# Toggle showing score/normal gameplay
-		score.visible = !score.visible
+    if event.is_action_pressed("open_menu"):
+        # Toggle showing menu
+        main_menu.visible = !main_menu.visible
+        # Toggle showing score/normal gameplay
+        score.visible = !score.visible
 
 
 #**********************************************************************
-## Functions related to the clock elements of the UI
+# Functions related to the clock elements of the UI
+## Function to update the elapsed time in the UI time_elapsed label
 func time_elapsed_update( val : String ) -> void:
-	time_elapsed.text = val
+    time_elapsed.text = val
 
 
 #**********************************************************************
-## Functions related to the "tries" element of the UI
+# Functions related to the "tries" element of the UI
+## Function to update the number of tries in the UI nr_of_tries label
 func nr_of_tries_update(tries : int ) -> void:
-	nr_of_tries.text = "Tries: " + str(tries)
+    nr_of_tries.text = "Tries: " + str(tries)
 
 
 #**********************************************************************
-## Functions related to the time_splits panel
+# Functions related to the time_splits panel
+## Function that returns the size of the time_splits table
 func time_splits_size() -> int:
-	return time_splits.get_child_count()
+    return time_splits.get_child_count()
 
 
+## Function to add a new split to the time_splits table
 func time_splits_add( val : String ) -> void:
-	var new_split = Label.new()
-	new_split.text = val
-	time_splits.add_child(new_split)
+    var new_split = Label.new()
+    new_split.text = val
+    time_splits.add_child(new_split)
 
 
+## Function that resets/removes all the children of the time_splits
+## table
 func time_splits_reset() -> void:
-	var children : Array[Node] = time_splits.get_children()
-	for c in children:
-		time_splits.remove_child(c)
-		c.queue_free()
+    var children : Array[Node] = time_splits.get_children()
+    for c in children:
+        time_splits.remove_child(c)
+        c.queue_free()
+
 
 #**********************************************************************
 # Functions related to the countdown element of the UI
 ## Show the countdown UI element with the provided string
 func countdown_show(str : String = "") -> void:
-	countdown.text = str
-	countdown.show()
+    countdown.text = str
+    countdown.show()
 
 
+## Function to hide the UI countdown label
 func countdown_hide() -> void:
-	countdown.hide()
+    countdown.hide()
 
 
 #**********************************************************************
-## Functions related to the main menu elements of the UI
-func hide_main_menu() -> void:
-	# Hide the main menu
-	main_menu.hide()
-	# Show the score
-	score.show()
+# Functions related to the main menu elements of the UI
+## Function to hide the UI main_menu node
+func main_menu_hide() -> void:
+    # Hide the main menu
+    main_menu.hide()
+    # Show the score
+    score.show()
 
 
 #**********************************************************************
-## Callbacks for main menu buttons
+# Callbacks for main menu buttons
+## Callback for the UI resume_game button
 func _on_resume_game_pressed() -> void:
-	if main_menu.visible:
-		user_requested_resume_game.emit()
-		print("Resume game pressed!")
-		hide_main_menu()
+    if main_menu.visible:
+        user_requested_resume_game.emit()
+        print("Resume game pressed!")
+        main_menu_hide()
 
 
+## Callback for the UI start_game button
 func _on_start_game_pressed() -> void:
-	if main_menu.visible:
-		user_requested_start_game.emit()
-		print("Start/Restart game pressed!")
-		# Change the text on the start game button
-		start_game.text = "Restart"
-		# Unhide the resume butting
-		resume_game.show()
-		hide_main_menu()
+    if main_menu.visible:
+        user_requested_start_game.emit()
+        print("Start/Restart game pressed!")
+        # Change the text on the start game button
+        start_game.text = "Restart"
+        # Unhide the resume butting
+        resume_game.show()
+        main_menu_hide()
 
 
+## Callback for the UI qui_game button
 func _on_quit_game_pressed() -> void:
-	if main_menu.visible:
-		user_requested_quit_game.emit()
-		print("Quit game pressed!")
+    if main_menu.visible:
+        user_requested_quit_game.emit()
+        print("Quit game pressed!")

@@ -9,18 +9,18 @@ signal new_time(body : Node2D)
 
 
 func _ready() -> void:
-	# Connecting signals from each time split
-	time_split_0.new_time_split.connect(_on_new_time_split)
-	time_split_1.new_time_split.connect(_on_new_time_split)
-	time_split_2.new_time_split.connect(_on_new_time_split)
+    # Connecting signals from each time split
+    time_split_0.new_time_split.connect(_on_new_time_split)
+    time_split_1.new_time_split.connect(_on_new_time_split)
+    time_split_2.new_time_split.connect(_on_new_time_split)
 
 
 func get_start_position() -> Vector2:
-	# Get the starting position 
-	return start_position.to_global(position)
+    # Get the starting position
+    return start_position.to_global(position)
 
 
 #**********************************************************************
 # Callback for new time split
 func _on_new_time_split(body : Node2D) -> void:
-	new_time.emit(body)
+    new_time.emit(body)
