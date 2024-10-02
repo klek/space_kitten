@@ -2,6 +2,7 @@ extends CanvasLayer
 class_name user_interface
 
 # Signals that the UI can generate
+signal user_requested_open_menu()
 signal user_requested_resume_game()
 signal user_requested_quit_game()
 signal user_requested_start_game()
@@ -29,11 +30,20 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+    # TODO(klek): Consider moving this input handling to the game script!
     if event.is_action_pressed("open_menu"):
-        # Toggle showing menu
-        main_menu.visible = !main_menu.visible
-        # Toggle showing score/normal gameplay
-        score.visible = !score.visible
+        if !(main_menu.visible):
+            # Toggle showing menu
+            #main_menu.visible = !main_menu.visible
+            main_menu_show()
+            # Toggle showing score/normal gameplay
+            #score.visible = !score.visible
+            # TODO(klek): Show the mouse
+            #Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+            user_requested_open_menu.emit()
+
+        # TODO: If "open_menu" pressed again it still pauses the game
+        # Should perhaps disable escaping the menu by pressing ESQ?
 
 
 #**********************************************************************
@@ -95,6 +105,12 @@ func main_menu_hide() -> void:
     # Show the score
     score.show()
 
+
+func main_menu_show() -> void:
+    # Show the main menu
+    main_menu.show()
+    # Hide the score
+    score.hide()
 
 #**********************************************************************
 # Callbacks for main menu buttons

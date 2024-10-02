@@ -24,6 +24,7 @@ var _time_splits : Array[date_time] = []
 
 func _ready() -> void:
     # Connect signals from ui to the local callbacks
+    ui.user_requested_open_menu.connect(_on_user_requested_open_menu)
     ui.user_requested_quit_game.connect(_on_user_requested_quit_game)
     ui.user_requested_resume_game.connect(_on_user_requested_resume_game)
     ui.user_requested_start_game.connect(_on_user_requested_start_game)
@@ -133,14 +134,28 @@ func load_scene( scene_to_load: PackedScene ) -> Node2D:
 func quit_game() -> void:
     get_tree().quit()
 
+
+func mouse_cursor_show() -> void:
+    Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func mouse_cursor_hide() -> void:
+    Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+
 #**********************************************************************
 # Callbacks for UI elements
+func _on_user_requested_open_menu() -> void:
+    mouse_cursor_show()
+
+
 func _on_user_requested_quit_game() -> void:
     quit_game()
 
 
 func _on_user_requested_resume_game() -> void:
     unpause_game()
+    # TODO(klek): Hide the mouse
+    mouse_cursor_hide()
 
 
 func _on_user_requested_start_game() -> void:
@@ -162,6 +177,8 @@ func _on_user_requested_start_game() -> void:
     # Start countdown timer
     _countdown_timer.start(3)
     # Unpause the game world
+    # TODO(klek): Hide the mouse
+    mouse_cursor_hide()
     #unpause_game()
 
 #**********************************************************************

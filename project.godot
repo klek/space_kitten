@@ -59,6 +59,7 @@ open_menu={
 2d_physics/layer_1="player"
 2d_physics/layer_2="terrain"
 2d_physics/layer_3="time_splits"
+2d_physics/layer_4="traps"
 
 [rendering]
 
