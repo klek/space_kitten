@@ -6,6 +6,8 @@ signal new_time(body : Node2D)
 @onready var time_split_0: time_split_element = %time_split_0
 @onready var time_split_1: time_split_element = %time_split_1
 @onready var time_split_2: time_split_element = %time_split_2
+@onready var time_split_3: time_split_element = %time_split_3
+@onready var time_split_4: time_split_element = %time_split_4
 
 
 func _ready() -> void:
@@ -13,6 +15,8 @@ func _ready() -> void:
     time_split_0.new_time_split.connect(_on_new_time_split)
     time_split_1.new_time_split.connect(_on_new_time_split)
     time_split_2.new_time_split.connect(_on_new_time_split)
+    time_split_3.new_time_split.connect(_on_new_time_split)
+    time_split_4.new_time_split.connect(_on_new_time_split)
 
 
 func get_start_position() -> Vector2:

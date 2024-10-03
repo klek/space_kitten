@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/character/flying_saucer.gd" id="1_7rkjj"]
 [ext_resource type="Texture2D" uid="uid://b1t8bhj25b73a" path="res://assets/spaceship.png" id="2_ag7jh"]
 
-[node name="flying_saucer" type="RigidBody2D"]
+[node name="flying_saucer" type="RigidBody2D" groups=["player"]]
 collision_mask = 14
 gravity_scale = 0.125
 center_of_mass_mode = 1
