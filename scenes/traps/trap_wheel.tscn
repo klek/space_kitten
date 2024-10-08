@@ -1,0 +1,305 @@
+[gd_scene load_steps=3 format=3 uid="uid://pod4inq6dqbv"]
+
+[ext_resource type="Texture2D" uid="uid://bld6c5rwfhbg7" path="res://assets/tilesets/atlas.png" id="1_xmxmw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58hbw"]
+size = Vector2(32, 32)
+
+[node name="trap_wheel" type="Node2D"]
+
+[node name="anchor" type="StaticBody2D" parent="."]
+collision_layer = 10
+
+[node name="anchor_sprite_0" type="Sprite2D" parent="anchor"]
+visible = false
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="anchor"]
+shape = SubResource("RectangleShape2D_58hbw")
+
+[node name="wheel" type="RigidBody2D" parent="."]
+collision_layer = 8
+
+[node name="body_sprites" type="Node2D" parent="wheel"]
+metadata/_edit_group_ = true
+
+[node name="body_sprite_0" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(-64, -64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_1" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(-32, -64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_2" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(0, -64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_3" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(32, -64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_4" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(64, -64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_5" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(-64, -32)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_6" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(-32, -32)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_7" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(0, -32)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_8" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(32, -32)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_9" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(64, -32)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_10" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(-64, 0)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_11" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(-32, 0)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_12" type="Sprite2D" parent="wheel/body_sprites"]
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_13" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(32, 0)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_14" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(64, 0)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_15" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(-64, 32)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_16" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(-32, 32)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_17" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(0, 32)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_18" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(32, 32)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_19" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(64, 32)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_20" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(-64, 64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_21" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(-32, 64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_22" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(0, 64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_23" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(32, 64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="body_sprite_24" type="Sprite2D" parent="wheel/body_sprites"]
+position = Vector2(64, 64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="wing_sprites" type="Node2D" parent="wheel"]
+metadata/_edit_group_ = true
+
+[node name="wing_sprite_0" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(-64, -128)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_1" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(64, -128)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_2" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(-96, -96)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_3" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(-64, -96)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_4" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(64, -96)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_5" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(96, -96)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_6" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(-128, -64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_7" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(-96, -64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_8" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(96, -64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_9" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(128, -64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_10" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(-128, 64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_11" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(-96, 64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_12" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(96, 64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_13" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(128, 64)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_14" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(-96, 96)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_15" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(-64, 96)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_16" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(64, 96)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_17" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(96, 96)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_18" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(-64, 128)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="wing_sprite_19" type="Sprite2D" parent="wheel/wing_sprites"]
+position = Vector2(64, 128)
+texture = ExtResource("1_xmxmw")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wheel"]
+polygon = PackedVector2Array(-80, -48, -144, -48, -144, -80, -112, -80, -112, -112, -80, -112, -80, -144, -48, -144, -48, -80, 48, -80, 48, -144, 80, -144, 80, -112, 112, -112, 112, -80, 144, -80, 144, -48, 80, -48, 80, 48, 144, 48, 144, 80, 112, 80, 112, 112, 80, 112, 80, 144, 48, 144, 48, 80, -48, 80, -48, 144, -80, 144, -80, 112, -112, 112, -112, 80, -144, 80, -144, 48, -80, 48)
+
+[node name="axis" type="PinJoint2D" parent="."]
+node_a = NodePath("../anchor")
+node_b = NodePath("../wheel")
